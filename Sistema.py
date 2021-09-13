@@ -60,7 +60,9 @@ while (Encendido == True):
 	Duracion = 4 
 	Spe_Text = ST.STT()
 	print("\n\n Te escucho ........ \n\n")
+	r.publish("voiceDeteted", True);
 	Texto = Spe_Text.Lisen(Duracion)
+	r.publish("voiceCommand", Texto);
 	print(Texto)
 
 
