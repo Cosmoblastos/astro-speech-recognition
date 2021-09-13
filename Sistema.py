@@ -83,7 +83,7 @@ while (Encendido == True):
 			Consulta = Texto.replace("google","")
 			r.rpush("voiceComands",'google')
 			print(Consulta)
-			os.system("python google.py "+Consulta)
+			os.system("python3 google.py "+Consulta)
 			Success = True
 
 		Intentos +=1
