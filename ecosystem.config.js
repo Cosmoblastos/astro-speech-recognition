@@ -1,6 +1,7 @@
 module.exports = {
   apps : [{
-    name   : "app1",
-    script : "./app.js"
+    name   : "listener",
+    interpreter: "python3",
+    script : "./Sistema.py",
   }]
 }
