@@ -89,7 +89,7 @@ while (Encendido == True):
 			Success = True
 
 		if "quién soy" in Texto:
-			r.publish("face_recognition", "quien soy")
+			r.publish("faceRecognition", "quien soy")
 			Success = True
 
 		Intentos +=1
