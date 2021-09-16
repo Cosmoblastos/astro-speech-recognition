@@ -88,6 +88,10 @@ while (Encendido == True):
 			os.system("python3 google.py "+Consulta)
 			Success = True
 
+		if "quién soy" in Texto:
+			r.publish("face_recognition", "quien soy")
+			Success = True
+
 		Intentos +=1
 
 
