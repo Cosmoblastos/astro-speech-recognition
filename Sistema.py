@@ -88,7 +88,7 @@ while (Encendido == True):
 			os.system("python3 google.py "+Consulta)
 			Success = True
 
-		if "quién soy" in Texto:
+		if ("quién soy" in Texto):
 			r.publish("faceRecognition", "quien soy")
 			Success = True
 
