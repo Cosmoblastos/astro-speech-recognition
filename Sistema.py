@@ -119,9 +119,6 @@ def main ():
 				os.system("python Curioso.py")
 				Success = True
 
-			astro estoy satisfecha con mi cuidado el diga
-			siempre soñé con una vida al servicio de la ciencia
-
 			Intentos +=1
 
 		r.rpush("vouceEvents", json.dumps({'type': "event", "name": "no-hearing"}, indent = 4))
