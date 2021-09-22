@@ -70,7 +70,7 @@ def main ():
 				Encendido = False
 
 			if(Texto=="hora"):
-				os.system("python Hora.py")
+				os.system("python3 Hora.py")
 				Success = True
 
 			if (Texto == "presentate" or Texto == "preséntate"):
@@ -79,7 +79,7 @@ def main ():
 
 			if "google" in Texto:
 				Consulta = Texto.replace("google","")
-				os.system("python google.py " + Consulta)
+				os.system("python3 google.py " + Consulta)
 				Success = True
 
 			if "emergencia" in Texto:
@@ -112,11 +112,11 @@ def main ():
 				pass
 			
 			if "chiste" in Texto:
-				os.system("python Chistoso.py")
+				os.system("python3 Chistoso.py")
 				Success = True
 
 			if "curioso" in Texto:
-				os.system("python Curioso.py")
+				os.system("python3 Curioso.py")
 				Success = True
 
 			Intentos +=1
