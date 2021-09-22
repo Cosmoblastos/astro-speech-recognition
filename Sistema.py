@@ -39,7 +39,6 @@ def Llamado(Nombre):
 	except: pass
 
 
-
 def main ():
 	Encendido = True           #Este es el estao de astro
 	Nombre = 'Astro'
