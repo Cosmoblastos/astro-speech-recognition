@@ -1,10 +1,6 @@
-
-
-
 '''
 	Este codigo contiene el administrador de operaciones mediante comando de voz
 '''
-
 
 import Tex_Spe  as TS
 import Spe_Text as ST
@@ -12,14 +8,8 @@ import subprocess
 import os
 import time
 #import ComandsQ
-from redis import Redis 
-
-r=Redis(host="localhost",port=6379)
-
-
-Encendido = True           #Este es el estao de astro
-#queue=ComandsQ.CreatQ()
-Nombre = 'Astro'
+from redis import Redis
+import json
 
 #Esta funcion utiliza 35 subprocesos para identificar si se ha mencionando el nombre del asistente 
 def Llamado(Nombre):  
@@ -49,50 +39,92 @@ def Llamado(Nombre):
 	except: pass
 
 
-#.................................................................................................................
-#Inicia el protocolo para escuchar a diestra y siniestra
-while (Encendido == True):
 
-	#Instruccion para detectar el nombre del asistente
-	Llamado(Nombre)
+def main ():
+	Encendido = True           #Este es el estao de astro
+	Nombre = 'Astro'
+	TTS1 = TS.TTS()
+	r=Redis(host="localhost",port=6379)
+	#.................................................................................................................
+	#Inicia el protocolo para escuchar a diestra y siniestra
+	while (Encendido == True):
 
-	#Escuchamos la instruccion
-	Duracion = 4 
-	Spe_Text = ST.STT()
-	print("\n\n Te escucho ........ \n\n")
-	r.publish("voiceDetected", "astro");
-	Texto = Spe_Text.Lisen(Duracion)
-	r.publish("voiceCommand", Texto);
-	print(Texto)
+		#Instruccion para detectar el nombre del asistente
+		Llamado(Nombre)
 
+		#Escuchamos la instruccion
+		Duracion = 4 
+		Spe_Text = ST.STT()
+		print("\n\n Te escucho ........ \n\n")
+		r.rpush("voiceEvents", json.dumps({'type': "event", "name": "hearing"}, indent = 4))
+		Texto = Spe_Text.Lisen(Duracion)
+		print(Texto)
+		
+		if not Texto: continue
 
-	Intentos = 0
-	Success = False
-	while(Intentos<3 and Success ==False):
+		Intentos = 0
+		Success = False
+		while(Intentos<3 and Success == False):
 
-		if(Texto=="apagar"):
-			r.rpush("voiceComands",'off')
-			Success = True
-			Encendido=False
+			if(Texto=="apagar"):
+				Success = True
+				Encendido = False
 
-		if(Texto=="hora"):
-			os.system("python Hora.py")
-			#r.set("voiceComand",'time')
-			r.rpush("voiceComands","time")
-			Success = True
+			if(Texto=="hora"):
+				os.system("python Hora.py")
+				Success = True
 
-		if "google" in Texto:
-			Consulta = Texto.replace("google","")
-			r.rpush("voiceComands",'google')
-			print(Consulta)
-			os.system("python3 google.py "+Consulta)
-			Success = True
+			if (Texto == "presentate" or Texto == "preséntate"):
+				TTS1.Speak(Texto="Hola, soy ASTRO, tu asistente médico personal")
+				Success = True
 
-		if ("quién soy" in Texto):
-			r.publish("faceRecognition", "quien soy")
-			Success = True
+			if "google" in Texto:
+				Consulta = Texto.replace("google","")
+				os.system("python google.py " + Consulta)
+				Success = True
 
-		Intentos +=1
+			if "emergencia" in Texto:
+				#PREGUNTA ¿qué edad tiene?
+				TTS1.Speak(Texto="¿Qué edad tiene el paciente?")
+				# ----ASTRO escucha y almacena el texto
+				edad = Spe_Text.Lisen(Duracion=5)
+				#PREGUNTA ¿es hombre o mujer?
+				TTS1.Speak(Texto="¿Es hombre o mujer?")
+				# ----ASTRO escucha y almacena el texto
+				sexo = Spe_Text.Lisen(Duracion=5)
+				
+				#Se muestra el video en la interfaz gráfica y avanza ASTRO al paciente
+				#---TAREA 1: mostrar el video en la graphic interface
+				#---TAREA 2: avanza 2 metros
+				r.rpush("voiceEvents", json.dumps({'type': "voiceCommand", "name": "emergencia", "payload": {"edad": edad, "sexo": sexo}}, indent = 4))
 
+				#AUDIO: Por favor, coloqua el dedo índice del paciente en mi sensor
+				TTS1.Speak(Texto="Por favor, coloqua el dedo índice del paciente en mi sensor")
 
+				#AUDIO: Sigue las instrucciones que se presentan en mi pantalla
+				TTS1.Speak(Texto="Sigue las instrucciones que se presentan en mi pantalla")
+				
+				Success = True
+			
+			if Texto == "identificame":
+				#identificar
+				#EVENTO 1: abrir la camara
+				#EVENTO 2: 
+				pass
+			
+			if "chiste" in Texto:
+				os.system("python Chistoso.py")
+				Success = True
 
+			if "curioso" in Texto:
+				os.system("python Curioso.py")
+				Success = True
+
+			astro estoy satisfecha con mi cuidado el diga
+			siempre soñé con una vida al servicio de la ciencia
+
+			Intentos +=1
+
+		r.rpush("vouceEvents", json.dumps({'type': "event", "name": "no-hearing"}, indent = 4))
+
+main()
