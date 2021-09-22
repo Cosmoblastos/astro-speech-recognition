@@ -1,6 +1,5 @@
+##Astro Speach Recognition
 
-
-Readme
-
-
-	
+#Install
+- SpeechRecognition
+- 
