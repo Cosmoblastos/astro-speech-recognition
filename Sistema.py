@@ -44,7 +44,6 @@ def Llamado(Nombre):
 	try: child4.kill()
 	except: pass
 
-
 def main():
     	TTS1 = TS.TTS()
 
