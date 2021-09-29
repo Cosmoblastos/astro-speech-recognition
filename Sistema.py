@@ -20,15 +20,15 @@ Nombre = 'Astro'
 #Esta funcion utiliza 35 subprocesos para identificar si se ha mencionando el nombre del asistente 
 def Llamado(Nombre):  
 
-	child0 = subprocess.Popen(['python', './Auxiliar.py'])
+	child0 = subprocess.Popen(['python3', './Auxiliar.py'])
 	time.sleep(0.2)
-	child1 = subprocess.Popen(['python', './Auxiliar.py'])
+	child1 = subprocess.Popen(['python3', './Auxiliar.py'])
 	time.sleep(0.2)
-	child2 = subprocess.Popen(['python', './Auxiliar.py'])
+	child2 = subprocess.Popen(['python3', './Auxiliar.py'])
 	time.sleep(0.2)
-	child3 = subprocess.Popen(['python', './Auxiliar.py'])
+	child3 = subprocess.Popen(['python3', './Auxiliar.py'])
 	time.sleep(0.2)
-	child4 = subprocess.Popen(['python', './Auxiliar.py'])
+	child4 = subprocess.Popen(['python3', './Auxiliar.py'])
 
 	while(child0.poll() == None and child1.poll() == None and child2.poll() == None and child3.poll() == None and child4.poll() == None): 
 		pass
