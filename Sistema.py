@@ -56,7 +56,7 @@ def main():
 		print("\n\n Te escucho .... \n\n")
 		r.publish("voiceDetected", "astro");
 		#r.rpush("voiceEvents", json.dumps({'type': "event", "name": "hearing"}, indent = 4))
-		Texto = Spe_Text.listen(Duracion)
+		Texto = Spe_Text.Listen(Duracion)
 		print(Texto)
 
 		if not Texto: continue
@@ -95,11 +95,11 @@ def main():
 				#PREGUNTA ¿qué edad tiene?
 				TTS1.Speak(Texto="¿Qué edad tiene el paciente?")
 				# ----ASTRO escucha y almacena el texto
-				edad = Spe_Text.Lisen(Duracion=5)
+				edad = Spe_Text.Listen(Duracion=5)
 				#PREGUNTA ¿es hombre o mujer?
 				TTS1.Speak(Texto="¿Es hombre o mujer?")
 				# ----ASTRO escucha y almacena el texto
-				sexo = Spe_Text.Lisen(Duracion=5)
+				sexo = Spe_Text.Listen(Duracion=5)
 
 				#Se muestra el video en la interfaz gráfica y avanza ASTRO al paciente
 				#---TAREA 1: mostrar el video en la graphic interface
