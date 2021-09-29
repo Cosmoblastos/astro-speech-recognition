@@ -67,7 +67,7 @@ def main():
 
 			if "hora" in  Texto:
 				os.system("python3 Hora.py")
-				Existo = True
+				Exito = True
 
 			if (Texto == "presentate" or Texto == "preséntate"):
 				#TODO: abstraer funcionalidad de audio
