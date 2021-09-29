@@ -19,7 +19,7 @@ def Llamado(Keyword):
 		#Esperamos la instruccion de invocacion con el Nombre del asistente
 		Duracion = 1                      #Segundos de revicion
 
-		Texto = Spe_Text.Lisen(Duracion)
+		Texto = Spe_Text.Listen(Duracion)
 
 
 
