@@ -14,7 +14,7 @@ class STT():
 		self.Chismoso = sr.Recognizer()
 
 	#Utilzo el paquete para escuchar y convertir el audio en texto
-	def Lisen(self,Duracion):
+	def Listen(self,Duracion):
 
 		#print("Escuchando ...")
 		with sr.Microphone() as source:
