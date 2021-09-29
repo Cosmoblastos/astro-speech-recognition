@@ -1,10 +1,6 @@
-
-
-
 '''
 	Este codigo contiene el administrador de operaciones mediante comando de voz
 '''
-
 
 import Tex_Spe  as TS
 import Spe_Text as ST
@@ -50,7 +46,7 @@ def Llamado(Nombre):
 
 
 def main():
-	TTS1 = TS.TTS()
+    	TTS1 = TS.TTS()
 
 	while(Encendido):
 		
