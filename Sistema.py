@@ -59,7 +59,7 @@ def main():
 		Texto = Spe_Text.listen(Duracion)
 		print(Texto)
 
-		if not Texto continue
+		if not Texto: continue
 
 		Intentos = 0
 		Exito = False
