@@ -12,9 +12,8 @@ for message in pubsub.listen():
 	print("Redis: ")
 	print(message)
 	if (message['channel'] == 'faceIdentification'):
-        print("Eres "+ message['data'])
-	    Speaker("Eres "+ message['data'])
-        # speak message['data']
+		print("Eres "+ message['data'])
+		Speaker("Eres "+ message['data'])
 
 def Speaker(Texto):
-    TTS1.Speak(Texto)
+TTS1.Speak(Texto)
