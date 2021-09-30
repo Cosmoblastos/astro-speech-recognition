@@ -13,7 +13,8 @@ for message in pubsub.listen():
     print(message)
     if (message['channel'] == 'faceIdentification'):
         print("Eres "+ message['data'])
-        Speaker("Eres "+ message['data'])
+        if(isinstance(message['data'], str)):
+            Speaker("Eres "+ str(message['data']))
 
 def Speaker(Texto):
     TTS1.Speak(Texto)
