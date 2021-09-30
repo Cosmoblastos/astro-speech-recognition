@@ -12,7 +12,7 @@ for message in pubsub.listen():
     print("Redis: ")
     print(message)
     if (message['channel'] == 'faceIdentification'):
-        print("Eres "+ message['data'])
+        print("Eres "+ str(message['data']))
         if(isinstance(message['data'], str)):
             Speaker("Eres "+ str(message['data']))
 
