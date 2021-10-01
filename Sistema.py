@@ -112,6 +112,8 @@ def main():
 				#AUDIO: Sigue las instrucciones que se presentan en mi pantalla
 				TTS1.Speak(Texto="Sigue las instrucciones que se presentan en mi pantalla")
 
+				r.publish("playVideo", "emergency");
+
 				Exito = True
 
 			if(Exito == False):
