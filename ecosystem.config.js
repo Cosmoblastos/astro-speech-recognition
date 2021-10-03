@@ -1,12 +1,12 @@
 module.exports = {
   apps: [
     {
-      name: "listener",
+      name: "Listener",
       interpreter: "python3",
       script: "./Sistema.py",
     },
     {
-      name: "speaker",
+      name: "Speaker",
       interpreter: "python3",
       script: "./Speaker.py",
     }
