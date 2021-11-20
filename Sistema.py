@@ -98,7 +98,7 @@ def main():
 
 			if ("iniciar medicamento" in Texto):
 				r.publish("init", "initDrug")
-				os.system("python3 New_drug.py")
+				os.system("python3 New_Drug.py")
 				Exito = True
 
 			if ("iniciar rutina" in Texto):
