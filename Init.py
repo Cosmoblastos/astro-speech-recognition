@@ -6,24 +6,21 @@ TTS1 = TS.TTS()
 
 Spe_Text = ST.STT()
 
-TTS1.Speak(Texto="Hola, soy Astro Mx ayudaré a tu médico y a ti con el manejo de tu padecimiento.")
-TTS1.Speak(Texto="Introduce tu código único de AstroID para comenzar a aplicar el tratamiento que tu médico y yo hemos preparado para ti. ")
+TTS1.Speak(Texto="Hola, soy Astro Mx ayudaré a tu médico y a ti con el manejo de tu padecimiento. Introduce tu código único de AstroID para comenzar a aplicar el tratamiento que tu médico y yo hemos preparado para ti. ")
 # ----ASTRO escucha y almacena el texto
 code = Spe_Text.Listen(Duracion=5)
 
-TTS1.Speak(Texto="Mucho gusto Daniela, es un placer conocerte")
-TTS1.Speak(Texto="Antes de comenzar, me gustaría comprobar que mi información acerca de ti es correcta.")
-TTS1.Speak(Texto="¿Tu nombre es Daniela?")
+TTS1.Speak(Texto="Mucho gusto Daniela, es un placer conocerte. Antes de comenzar, me gustaría comprobar que mi información acerca de ti es correcta. ¿Tu nombre es Daniela?")
 
-name = Spe_Text.Listen(Duracion=5)
+name = Spe_Text.Listen(Duracion=3)
 
 TTS1.Speak(Texto="¿Tu dirección de correo electrónico es daniela arroba gmail punto com?")
 
-email = Spe_Text.Listen(Duracion=5)
+email = Spe_Text.Listen(Duracion=3)
 
 TTS1.Speak(Texto="¿El nombre de tu médico es Emilio Maya?")
 
-doctor = Spe_Text.Listen(Duracion=5)
+doctor = Spe_Text.Listen(Duracion=3)
 
 TTS1.Speak(Texto="¡Perfecto! Podemos comenzar.")
 TTS1.Speak(Texto="Tu médico te ha diagnosticado Lumbalgia")
