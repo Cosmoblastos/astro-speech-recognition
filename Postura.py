@@ -1,7 +1,7 @@
 
 
 import gi
-gi.require_version('Gtk', '2.0')
+gi.require_version('Gtk', '3.0')
 import cv2
 import mediapipe as mp
 mp_drawing = mp.solutions.drawing_utils
