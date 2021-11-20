@@ -91,23 +91,23 @@ def main():
 				r.publish("faceRecognition", "quien soy")
 				Exito = True
 
-            if ("inicio" in Texto):
-                r.publish("init", "init")
-                #TODO: script for init astro mx
-                TTS1.Speak(Texto="Rutina de bienvenida")
-                Exito = True
+			if ("inicio" in Texto):
+				r.publish("init", "init")
+				#TODO: script for init astro mx
+				TTS1.Speak(Texto="Rutina de bienvenida")
+				Exito = True
 
-            if ("iniciar medicamento" in Texto):
-                r.publish("init", "initDrug")
-                #TODO: script for init drugs
-                TTS1.Speak(Texto="Rutina de nuevo medicamento")
-                Exito = True
+			if ("iniciar medicamento" in Texto):
+				r.publish("init", "initDrug")
+				#TODO: script for init drugs
+				TTS1.Speak(Texto="Rutina de nuevo medicamento")
+				Exito = True
 
-            if ("iniciar rutina" in Texto):
-                r.publish("init", "initRoutine")
-                #TODO: script for init routines
-                TTS1.Speak(Texto="Rutina de inicio de terapia")
-                Exito = True
+			if ("iniciar rutina" in Texto):
+				r.publish("init", "initRoutine")
+				#TODO: script for init routines
+				TTS1.Speak(Texto="Rutina de inicio de terapia")
+				Exito = True
 
 			if "emergencia" in Texto:
 				#PREGUNTA ¿qué edad tiene?
