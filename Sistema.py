@@ -93,19 +93,19 @@ def main():
 
 			if ("inicio" in Texto):
 				r.publish("init", "init")
-				#TODO: script for init astro mx
+				os.system("python3 Init.py")
 				TTS1.Speak(Texto="Rutina de bienvenida")
 				Exito = True
 
 			if ("iniciar medicamento" in Texto):
 				r.publish("init", "initDrug")
-				#TODO: script for init drugs
+				os.system("python3 New_drug.py")
 				TTS1.Speak(Texto="Rutina de nuevo medicamento")
 				Exito = True
 
 			if ("iniciar rutina" in Texto):
 				r.publish("init", "initRoutine")
-				#TODO: script for init routines
+				os.system("python3 Play_Routine.py")
 				TTS1.Speak(Texto="Rutina de inicio de terapia")
 				Exito = True
 
