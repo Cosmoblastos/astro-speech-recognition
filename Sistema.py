@@ -49,6 +49,8 @@ def Llamado(Nombre):
 	except: pass
 
 
+Tex_Spe = TS.TTS()
+
 #.................................................................................................................
 #Inicia el protocolo para escuchar a diestra y siniestra
 while (Encendido == True):
@@ -66,7 +68,7 @@ while (Encendido == True):
 
 	Intentos = 0
 	Success = False
-	while(Intentos<3 and Success ==False):
+	while(Intentos <3 and Success ==False):
 
 		if(Texto=="apagar"):
 			r.rpush("voiceComands",'off')
@@ -79,6 +81,9 @@ while (Encendido == True):
 			r.rpush("voiceComands","time")
 			Success = True
 
+		if Texto == "emergencia":
+			Tex_Spe.Speak("Hola, soy astro, tu asistente médico personal. ¿Qué edad tiene la persona que necesita mi ayuda?")
+			
 		if "google" in Texto:
 			Consulta = Texto.replace("google","")
 			r.rpush("voiceComands",'google')
