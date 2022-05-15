@@ -160,7 +160,7 @@ while (Encendido == True):
 			dias = voice_question("Para finalizar, ¿Puedes decirme hace cuantos días te sientes así?")
 			#TODO: calcular resultados
 			
-			Tex_Spe.Speak("Gozas de buena salid, sigue usando el cubrebocas, salva vidas.")
+			Tex_Spe.Speak("Gozas de buena salud, sigue usando el cubrebocas, salva vidas.")
 			Success = True
 
 		if "emergencia" in Texto and "espacial" in Texto:
