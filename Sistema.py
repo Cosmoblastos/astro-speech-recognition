@@ -58,7 +58,7 @@ def voice_question (question):
 	if not question:
 		raise RuntimeError("No question provided to voice_question")
 	Tex_Spe.Speak(question)
-	response = Spe_Text.Lisen()
+	response = Spe_Text.Lisen(4)
 	return response
 
 #.................................................................................................................
@@ -125,7 +125,7 @@ while (Encendido == True):
 
 		if "ejercicio" in Texto:
 			Tex_Spe.Speak("¿Cúal es tu ID?")
-			id = Spe_Text.Lisen()
+			id = Spe_Text.Lisen(Duracion)
 			print(id)
 			Tex_Spe.Speak("Muy bien, comenzaremos con 20 flexiones como las que se muestran en mi pantalla")
 			r.publish("voiceEvents", json.dumps({ "type": "show_video", "payload": "ejercicio.mp4" }))
