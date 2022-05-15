@@ -10,11 +10,12 @@ import Tex_Spe  as TS
 import Spe_Text as ST
 import subprocess
 import os
+import json
 import time
 #import ComandsQ
 from redis import Redis 
 
-r=Redis(host="localhost",port=6379)
+r=Redis(host="localhost",port=6379, db=13)
 
 
 Encendido = True           #Este es el estao de astro
@@ -90,13 +91,22 @@ while (Encendido == True):
 			sexo = Spe_Text.Lisen(Duracion)
 			print(sexo)
 			#Tex_Spe.Speak(f"El paciente es {sexo}")
-			time.sleep(2)
+			Tex_Spe.Speak("Coloca el dedo índice del paciente en mi sensor")
+			r.publish("voiceEvents", json.dumps({"type": "metrics", "payload": True}))
+			time.sleep(8)
 			#mostrar video de mapa
+			r.publish("voiceEvents", json.dumps({ "type": "show_video", "payload": "mapa.mp4" }))
 			Tex_Spe.Speak("El paciente está teniendo un paro cardíaco, sus signos vitales se encuentran en mi pantalla y han sido enviados a los servicios de emergencia junto con tu ubicación")
-			time.sleep(2)
 			#mostrar video de emergencia
+			r.publish("voiceEvents", json.dumps({ "type": "show_image", "payload": "rcp_img1.png" }))
 			Tex_Spe.Speak("Por favor, colóquese a la altura del hombro del paciente con las rodillas estables en el suelo y con una ligera separación como se ve en mi imagen, comenzará a hacer compresiones")
+			r.publish("voiceEvents", json.dumps({ "type": "show_image", "payload": "rcp_img2.png" }))
 			Tex_Spe.Speak("Las manos deben ir enlazadas con la palma de la mano dominante por debajo de la otra mano, para así poder apoyar el talón de la mano con mayor fuerza.")
+			Tex_Spe.Speak("Realizará 5 ciclos de 30 compresiones seguidas de 2 ventilaciones")
+			Tex_Spe.Speak("Comprima de 5 a 7 centímetros en el pecho del paciente, justo en el lugar que se muestra, 30 veces al ritmo marcado")
+			Tex_Spe.Speak("Listo, comenzamos")
+			r.publish("voiceEvents", json.dumps({ "type": "rcp_count", "payload": "" }))
+			os.system("play compresion.mp3")
 			Success = True
 		
 		if "google" in Texto:
