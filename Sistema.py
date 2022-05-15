@@ -6,6 +6,7 @@
 '''
 
 
+from re import T
 import Tex_Spe  as TS
 import Spe_Text as ST
 import subprocess
@@ -52,6 +53,14 @@ def Llamado(Nombre):
 
 Tex_Spe = TS.TTS()
 
+
+def voice_question (question):
+	if not question:
+		raise RuntimeError("No question provided to voice_question")
+	Tex_Spe.Speak(question)
+	response = Spe_Text.Lisen()
+	return response
+
 #.................................................................................................................
 #Inicia el protocolo para escuchar a diestra y siniestra
 while (Encendido == True):
@@ -63,6 +72,7 @@ while (Encendido == True):
 	Duracion = 4 
 	Spe_Text = ST.STT()
 	print("\n\n Te escucho ........ \n\n")
+	r.publish("voiceEvents", json.dumps({ "type": "listen", "payload": True }))
 	Texto = Spe_Text.Lisen(Duracion)
 	print(Texto)
 
@@ -108,7 +118,60 @@ while (Encendido == True):
 			r.publish("voiceEvents", json.dumps({ "type": "rcp_count", "payload": "" }))
 			os.system("play compresion.mp3")
 			Success = True
+
+		if Texto == "inicio":
+			Tex_Spe.Speak("Hola, soy astro, tu asistente médico personal. ¿En que te puedo ayudar?")
+			Success = True
+
+		if "ejercicio" in Texto:
+			Tex_Spe.Speak("¿Cúal es tu ID?")
+			id = Spe_Text.Lisen()
+			print(id)
+			Tex_Spe.Speak("Muy bien, comenzaremos con 20 flexiones como las que se muestran en mi pantalla")
+			r.publish("voiceEvents", json.dumps({ "type": "show_video", "payload": "ejercicio.mp4" }))
+			time.sleep(65) #duración del video de ejercicio
+
+			r.publish("voiceEvents", json.dumps({"type": "temperature", "payload": True}))
+			
+			#EVENTO: mostrar medidor de temperatura en pantalla de astro
+			Tex_Spe.Speak("Tu temperatura ahora es normal, por favor coloca tu dedo índice en mi sensor para revisar tus signos vitales")
+			r.publish("voiceEvents", json.dumps({"type": "metrics", "payload": True}))
+			time.sleep(8)
+
+			Tex_Spe.Speak("Perfecto, vamos a comenzar, estaré revisando tus signos vitales constantemente.")
+			r.publish("voiceEvents", json.dumps({"type": "show_video", "payload": "dani_ejercicio.mp4"}))
+			
+			time.sleep(4)
+			Tex_Spe.Speak("¡Lo estas haciendo bien!")
+
+			Success = True
+
+		if "covid" in Texto:
+			#tomar temperatura
+			r.publish("voiceEvents", json.dumps({ "type": "temperature", "payload": True }))
+			time.sleep(8)
+			Tex_Spe.Speak("Contesta las siguientes preguntas con un si o un no.")
 		
+			tos = voice_question("¿Tienes tos?")
+			respirar = voice_question("¿Te cuesta respirar?")
+			convivencia = voice_question("¿Has estado cerca de alguien que tiene coronavirus?")
+			dolor = voice_question("¿Te duelen los músculos?")
+			sentidos = voice_question("¿Has perdido el olfato y el gusto?")
+			dias = voice_question("Para finalizar, ¿Puedes decirme hace cuantos días te sientes así?")
+			#TODO: calcular resultados
+			
+			Tex_Spe.Speak("Gozas de buena salid, sigue usando el cubrebocas, salva vidas.")
+			Success = True
+
+		if "emergencia" in Texto and "espacial" in Texto:
+			Tex_Spe.Speak("Hola soy Astro tu asistente médico personal ¿Cual es el ID del paciente?")
+			id = voice_question("¿Cúal es el ID del paciente?")
+			Tex_Spe.Speak("Tengo sus datos. Coloca el dedo índice del paciente en mi sensor")
+			r.publish("voiceEvents", json.dumps({ "type": "metrics", "payload": True }))
+			Tex_Spe.Speak("El paciente está teniendo un paro cardíaco, sus signos vitales se encuentran en mi pantalla. Es hora de sujetarte a la estación, llevalo contigo")
+			Tex_Spe.Speak("Por favor colocate por detrás del paciente y coloca tus brazos alrededor del torso para ubicar tu mano dominante sobre la no dominante. Las manos deben ir al centro del tórax como se muestra en mi pantalla")
+			Success = True
+
 		if "google" in Texto:
 			Consulta = Texto.replace("google","")
 			r.rpush("voiceComands",'google')
