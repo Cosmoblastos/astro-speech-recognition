@@ -83,7 +83,26 @@ while (Encendido == True):
 
 		if Texto == "emergencia":
 			Tex_Spe.Speak("Hola, soy astro, tu asistente médico personal. ¿Qué edad tiene la persona que necesita mi ayuda?")
-			
+			edad = Spe_Text.Lisen()
+			Tex_Spe.Speak("¿Es hombre, o mujer?")
+			sexo = Spe_Text.Lisen()
+			if sexo:
+				try:
+					sexo = int(sexo)
+				except:
+					print("----- Parse error -----")
+					pass
+			Tex_Spe.Speak("Coloca el dedo índice del paciente en mi sensor")
+			time.sleep(5)
+			#Mostrar video de google maps
+			Tex_Spe.Speak("El paciente está teniendo un paro cardíaco, sus signos vitales se encuentran en mi pantalla y han sido mandados a los servicios de emergencia junto con tu ubicación")
+			Tex_Spe.Speak("Por favor, colóquese a la altura del hombro del paciente, con las rodillas estables en el suelo, con una ligera separación como se ve en mi imagen, comenzar a hacer compresiones") #mostrar imagen 1
+			Tex_Spe.Speak("Las manos deben ir entrelazadas con la palma de la mano dominante por debajo de la otra mano, para así poder apoyar el talón de la mano con mayor fuerza") #mostrar imagen 2
+			Tex_Spe.Speak("Realizará 5 ciclos de 30 compresiones seguidas de 2 ventilaciones")
+			Tex_Spe.Speak("Comprima de 5 a 7 centimetros en el pecho del paciente como se muestra en el video") #mostrar video 1
+			Tex_Spe.Speak("Listo, comenzamos") #Mostrar cuenta en la pantalla del 1 al 30 y poner audio de emergencia.
+			Success = False
+
 		if "google" in Texto:
 			Consulta = Texto.replace("google","")
 			r.rpush("voiceComands",'google')
