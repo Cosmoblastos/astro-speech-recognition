@@ -92,6 +92,11 @@ while (Encendido == True):
 			r.rpush("voiceComands","time")
 			Success = True
 
+		if Texto in "comunicación":
+			r.publish("voiceEvents", json.dumps({ "type": "show_webpage", "payload": "https://www.pictotraductor.com/" }))
+			Tex_Spe.Speak("Abriendo herramienta de comunicación sin habla")
+			Success = True
+
 		if Texto == "emergencia":
 			Tex_Spe.Speak("Hola, soy astro, tu asistente médico personal. ¿Qué edad tiene la persona que necesita mi ayuda?")
 			edad = Spe_Text.Lisen(Duracion)
@@ -102,7 +107,7 @@ while (Encendido == True):
 			print(sexo)
 			#Tex_Spe.Speak(f"El paciente es {sexo}")
 			Tex_Spe.Speak("Coloca el dedo índice del paciente en mi sensor")
-			r.publish("voiceEvents", json.dumps({"type": "metrics", "payload": True}))
+			r.publish("voiceEvents", json.dumps({ "type": "metrics", "payload": True }))
 			time.sleep(8)
 			#mostrar video de mapa
 			r.publish("voiceEvents", json.dumps({ "type": "show_video", "payload": "mapa.mp4" }))
