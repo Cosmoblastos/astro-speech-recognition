@@ -97,7 +97,7 @@ while (Encendido == True):
 			Tex_Spe.Speak("Abriendo herramienta de comunicación sin habla")
 			Success = True
 
-		if Texto == "rehabilitación":
+		if Texto in "rehabilitación":
 			Tex_Spe.Speak("Acatzin, bienvenido a tu sesión de rehabilitación")
 			Tex_Spe.Speak("¿Del 1 al 10 qué tan canssado te sientes hoy?")
 			cansancio = Spe_Text.Lisen(Duracion)
