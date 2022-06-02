@@ -69,7 +69,7 @@ while (Encendido == True):
 	Llamado(Nombre)
 
 	#Escuchamos la instruccion
-	Duracion = 4 
+	Duracion = 4
 	Spe_Text = ST.STT()
 	print("\n\n Te escucho ........ \n\n")
 	r.publish("voiceEvents", json.dumps({ "type": "listen", "payload": True }))
@@ -95,6 +95,14 @@ while (Encendido == True):
 		if Texto in "comunicación":
 			r.publish("voiceEvents", json.dumps({ "type": "show_webpage", "payload": "https://www.pictotraductor.com/" }))
 			Tex_Spe.Speak("Abriendo herramienta de comunicación sin habla")
+			Success = True
+
+		if Texto == "rehabilitación":
+			Tex_Spe.Speak("Acatzin, bienvenido a tu sesión de rehabilitación")
+			Tex_Spe.Speak("¿Del 1 al 10 qué tan canssado te sientes hoy?")
+			cansancio = Spe_Text.Lisen(Duracion)
+			Tex_Spe.Speak("De acuerdo, iniciemos")
+			r.publish("voiceEvents", json.dumps({ "type": "show_webpage", "payload": "https://www.youtube.com/embed/KmUVSXsHRic" }))
 			Success = True
 
 		if Texto == "emergencia":
