@@ -1,0 +1,16 @@
+{
+    "development": {
+        "host": "localhost",
+        "port": "3306",
+        "db": 13,
+        "user": "root",
+        "password": ""
+    },
+    "production": {
+        "host": "localhost",
+        "port": "3306",
+        "db": 1,
+        "user": "astro",
+        "password": "astro"
+    }
+}

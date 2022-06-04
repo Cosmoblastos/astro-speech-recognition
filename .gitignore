@@ -2,3 +2,6 @@
 /include
 /bin
 /pyenv.cfg
+*.pyc
+/__pycache__
+/venv

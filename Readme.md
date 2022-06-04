@@ -1,5 +1,8 @@
-##Astro Speach Recognition
+## Astro Speach Recognition
 
-#Install
+# Install
 - SpeechRecognition
-- 
+
+
+# Create redis user
+- ACL SETUSER astro allkeys +@string +@set -SADD >astro
