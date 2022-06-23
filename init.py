@@ -1,4 +1,3 @@
-
 '''
 	Este codigo contiene el administrador de operaciones mediante comando de voz
 '''
