@@ -3,7 +3,6 @@ import gtts
 import os
 import time
 import subprocess
-from core import global_config
 
 #Calse speech to text
 '''
@@ -25,7 +24,7 @@ class STT:
 			texto = False
 
 			try:
-				text = self.chismoso.recognize_google(audio, language=global_config["input_language"])
+				text = self.chismoso.recognize_google(audio, language="en-US")
 				texto = text.lower()
 			except Exception as e:
 				print(f"----------- Speech To Text Error -----------: {e}")
@@ -35,7 +34,7 @@ class STT:
 	#Esta funcion utiliza 35 subprocesos para identificar si se ha mencionando el nombre del asistente 
 	def listen_keyword(self, keyword: str):
 
-		script_path = "./listen.py"
+		script_path = os.path.join(os.getcwd(), "lib/listen.py")
 
 		child0 = subprocess.Popen(['python', script_path, keyword])
 		time.sleep(0.2)
@@ -79,6 +78,12 @@ class TTS:
 
 	#Convierto el texto en audio y lo reproduzco
 	def speak(self, message: str) -> None:
-		tts = gtts.gTTS(message, lang=global_config["output_lang"])
-		tts.save("../audio/tmp_audio.mp3")
-		os.system('play ../audio/tmp_audio.mp3')
+		tts = gtts.gTTS(message)
+		tmpAudioPath = os.path.join(os.getcwd(), "audio/tmp_audio.mp3")
+		tts.save(tmpAudioPath)
+		os.system(f'play {tmpAudioPath}')
+
+
+if __name__ == "__main__":
+	stt = TTS()
+	stt.speak("Hello, I'm Astro")

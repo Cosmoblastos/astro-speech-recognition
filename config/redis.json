@@ -1,16 +1,16 @@
 {
     "development": {
         "host": "localhost",
-        "port": "3306",
+        "port": "6379",
         "db": 13,
-        "user": "root",
+        "username": "",
         "password": ""
     },
     "production": {
         "host": "localhost",
-        "port": "3306",
+        "port": "6379",
         "db": 1,
-        "user": "astro",
+        "username": "astro",
         "password": "astro"
     }
 }

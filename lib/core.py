@@ -18,10 +18,11 @@ redis_config = read_json(os.path.join(local_path, "../config/redis.json"))[env]
 dialogs = read_json(os.path.join(local_path, "../config/dialogs.json"))[general_output_lang]
 
 
+print(redis_config)
 redis_db = Redis(
 	host=redis_config["host"], \
 	port=redis_config["port"], \
 	db=redis_config["db"], \
     username=redis_config["username"], \
-    password=redis_config["password"]
+    password=redis_config["password"] or None
 )
