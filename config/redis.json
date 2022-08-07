@@ -6,6 +6,13 @@
         "username": "",
         "password": ""
     },
+    "docker": {
+        "host": "host.docker.internal",
+        "port": "6379",
+        "db": 13,
+        "username": "",
+        "password": ""
+    },
     "production": {
         "host": "localhost",
         "port": "6379",

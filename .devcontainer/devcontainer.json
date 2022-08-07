@@ -1,0 +1,12 @@
+{
+    "name": "SPEECH-RECOGNITION",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "appPort": [ 8888 ],
+    "settings": {
+        "workbench.colorTheme": "GitHub Dark Dimmed"
+    },
+    "postCreateCommand": "pip3 install -r requirements.txt"
+}

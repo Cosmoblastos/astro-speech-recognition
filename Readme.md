@@ -39,7 +39,7 @@ root:
 ## CHEAT SHEET
 -CREATE A REDIS USER: ACL SETUSER astro allkeys +@string +@set -SADD >astro
 
-sudo apt install flac
+sudo apt install flac libsox-fmt-mp3 sox portaudio19-dev
 sudo apt install portaudio19-dev
 sudo apt install libsox-fmt-mp3
 sudo apt install sox

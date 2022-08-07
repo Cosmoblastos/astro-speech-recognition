@@ -6,7 +6,6 @@ import os
 import json
 import time
 from re import T
-from tkinter import dialog
 from lib.speech import STT, TTS
 from lib.core import redis_db, global_config, dialogs
 
