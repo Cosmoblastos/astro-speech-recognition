@@ -14,7 +14,6 @@ on = True #Este es el estao de astro
 Tex_Spe = TTS()
 Spe_Text = STT()
 
-
 def voice_question (question: str, timeout: int = 4) -> str:
 	if not question:
 		raise RuntimeError("No question provided to voice_question")

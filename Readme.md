@@ -13,7 +13,7 @@ things like this:
 It's good to mention that this proyect has been tested in a Linux based environment, specifically in Raspbian, so in operating systems like Windows may not work.
 This project uses pyaudio to listen from the mic, apparently this library doesn't work well in Windows or Mac Os, so you if you want to test funcionalities like the voice recognition, you need a Raspberry Pi machine or a computer with some Linux distro.
 
-**⚠ It's very recommended to use python 3 or higher ⚠**
+**⚠ It's very recommended to use python 3.8 or higher ⚠**
 
 1. First of all, be sure to have installed python3, virtualenv and redis
 2. Clone the repo from [this link](https://github.com/Cosmoblastos/astro-speech-recognition).
