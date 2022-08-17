@@ -15,20 +15,17 @@ def voice_question (question: str, timeout: int = 4) -> str:
 	response = Spe_Text.listen(timeout)
 	return response
 
-def voice_event (event: str, data: any = None) -> None:
-	if not event:
-		raise RuntimeError("No event provided to publish_voice_event")
-	redis_db.publish("voiceEvents", json.dumps({ "type": event, "payload": data }))
-
-
 def performVoiceInstruction (instruction):
-    data = None
-    if 'waitForResponse' in instruction:
-        if instruction['waitForResponse']:
-            data = voice_question(instruction['say'])
+    if 'response' in instruction:
+        if instruction['response']['waitFor']:
+            dataValue = voice_question(instruction['say'])
+            return {
+                "name": instruction['response']['expectedValueName'], 
+                "type": instruction['response']['expectedType'],
+                "value": dataValue
+            }
     else:
         Tex_Spe.speak(instruction['say'])
-    return data
 
 def main ():
     pubsub = redis_db.pubsub()

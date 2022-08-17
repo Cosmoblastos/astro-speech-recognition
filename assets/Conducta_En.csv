@@ -1,0 +1,69 @@
+Intencion,Movimiento,Contenido
+GetHora,Accion,do you have the time?
+GetHora,Accion,Do you know what time it is? 
+GetHora,Accion,Can you give me the time?
+GetHora,Accion,What time is it?
+GetHora,Accion,Give me the time
+GetHora,Accion,What is the time?
+GetHora,Accion,What’s the time?
+GetHora,Accion,What time is it?
+GetHora,Accion,Give me the time
+GetHora,Reaccion,Funcion Hora
+Cheers,Accion,goodnight
+Cheers,Accion,good evening
+Cheers,Accion,good morning
+Cheers,Accion,Hi!
+Cheers,Accion,Hello
+Cheers,Accion,What's up
+Cheers,Accion,hi there
+Cheers,Reaccion,"hi, how are things?"
+Cheers,Reaccion, how's it going?
+Cheers,Reaccion,Hello
+Cheers,Reaccion,What's up
+Presentation,Accion,"Hello, I’m Nicolas"
+Presentation,Accion,"Hi, I am Ale"
+Presentation,Accion,"Hello, I introduce myself, I’m Daniela"
+Presentation,Accion,"Hello, I am Diego"
+Presentation,Reaccion,I am your personal medical assistant
+Presentation,Reaccion,Hi nice to meet you
+Presentation,Reaccion,"greetings, earthling"
+Polite,Accion,how was the day?
+Polite,Accion,how are you?
+Polite,Accion,how's it going?
+Polite,Accion,How do you feel?
+Polite,Reaccion,I feel fine
+Polite,Reaccion,I feel excellent
+Polite,Reaccion,only weak hearted people ask that
+Polite,Reaccion,Good!
+GetIden,Accion,"Tell me, who am I?"
+GetIden,Accion,guess who I am?
+GetIden,Accion,recognize me
+GetIden,Accion,identify us
+GetIden,Accion,identify me
+GetIden,Reaccion,Funcion Identificar
+GetOff,Accion,turn off
+GetOff,Accion,sleep
+GetOff,Reaccion,Funcion Apagar
+Gangoso,Accion,The fish is a thing 
+Gangoso,Accion,"For example, in this situation"
+Gangoso,Accion,you do not
+Gangoso,Accion,have to do anything
+Gangoso,Accion,Do you undersand this
+Gangoso,Accion,Imagnie that you are
+Gangoso,Accion,"New, and you are triying"
+Gangoso,Accion,to indentify the idea
+Gangoso,Accion,"that here, you "
+Gangoso,Accion,for this situtation
+Gangoso,Accion,for that food
+Gangoso,Accion,and in this and moment
+Gangoso,Accion,I love summer
+Gangoso,Reaccion,"Sorry,  I did not undersand your ask"
+Gangoso,Accion,I do not care
+GetJoke,Accion,Give me a joke
+GetJoke,Accion,could you tell me a joke
+GetJoke,Accion,could you tell me something funny
+GetJoke,Accion,Do you know any joke?
+GetJoke,Accion,Make me laugh
+GetJoke,Accion,Tell me a joke
+GetJoke,Accion,tell me something funny
+GetJoke,Reaccion,Funcion Chiste
