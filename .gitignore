@@ -5,3 +5,4 @@
 /__pycache__
 /venv
 .idea/
+./audio/tmp_audio.mp3

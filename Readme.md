@@ -21,9 +21,35 @@ This project uses pyaudio to listen from the mic, apparently this library doesn'
 4. Install all the dependencies with `pip install -r modules.txt`. This step could have a lot of errors depending on your mahcine and configuration.
 5. Run the project with `python init.py`
 
-### How to fix the posible errors that can appear
-//TODO: escribe esta sección Nico 😁
+---
+## 🔧 How to fix the posible errors that can appear 🔧
 
+1. Error while installing pyaudio on mac M1:
+- Install portaudio with brew:
+````
+brew install portaudio
+````
+- Link portaudio:
+````
+brew link portaudio
+````
+- Get the path where is portaudio installed:
+````
+brew --prefix portaudio
+````
+- Create this file and paste the following lines:
+````
+sudo nano $HOME/.pydistutils.cfg
+````
+````
+[build_ext]
+include_dirs=<PATH FROM STEP 3>/include/
+library_dirs=<PATH FROM STEP 3>/lib/
+````
+- Finally, install pyaudio:
+````
+pip install pyaudio
+````
 
 ## How the project is organized
 root:
@@ -39,7 +65,11 @@ root:
 ## CHEAT SHEET
 -CREATE A REDIS USER: ACL SETUSER astro allkeys +@string +@set -SADD >astro
 
-sudo apt install flac libsox-fmt-mp3 sox portaudio19-dev
-sudo apt install portaudio19-dev
-sudo apt install libsox-fmt-mp3
-sudo apt install sox
+## Required system dependencies
+
+- sudo apt install flac libsox-fmt-mp3 sox portaudio19-dev
+
+sox: contains the play command to execute audio files
+portaudio19-dev: allows the usage of pyaudio
+
+
