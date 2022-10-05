@@ -51,6 +51,13 @@ library_dirs=<PATH FROM STEP 3>/lib/
 pip install pyaudio
 ````
 
+2. AttributeError: Could not find PyAudio; check installation. <br />
+Posible solution
+````
+pip3 uninstall pyaudio
+pip3 install pyaudio --no-cache-dir
+````
+
 ## How the project is organized
 root:
 - audio: this folder contain the sounds and beats that astro can play regardless of its voice. Can be button sounds, ringtones, alerts, etc.
