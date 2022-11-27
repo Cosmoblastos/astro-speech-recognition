@@ -3,10 +3,11 @@ from lib.core import redis_db
 import json
 import time
 from lib.speech import STT, TTS
+from lib.core import global_config
 
 
-Tex_Spe = TTS()
-Spe_Text = STT()
+Tex_Spe = TTS(lang=global_config['output_lang'])
+Spe_Text = STT(lang=global_config['input_lang'])
 
 def voice_question (question: str, timeout: int = 4) -> str:
 	if not question:

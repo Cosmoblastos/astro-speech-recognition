@@ -57,6 +57,7 @@ Posible solution
 pip3 uninstall pyaudio
 pip3 install pyaudio --no-cache-dir
 ````
+NOTA: por algúna razón solo funciona si lo ejecuto desde vs-code
 
 ## How the project is organized
 root:

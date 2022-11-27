@@ -11,7 +11,8 @@ import subprocess
 class STT:
 
 	#Inicializo el paquete
-	def __init__(self):
+	def __init__(self, lang: str):
+		self.lang = lang
 		self.chismoso = sr.Recognizer()
 
 	#Utilzo el paquete para escuchar y convertir el audio en texto
@@ -24,7 +25,7 @@ class STT:
 			texto = False
 
 			try:
-				text = self.chismoso.recognize_google(audio, language="en-US")
+				text = self.chismoso.recognize_google(audio, language=self.lang)
 				texto = text.lower()
 			except Exception as e:
 				print(f"----------- Speech To Text Error -----------: {e}")
@@ -73,12 +74,13 @@ class STT:
 class TTS:
 
 	#Inicializo el paquete
-	def __init__(self):
+	def __init__(self, lang: str):
+		self.lang = lang
 		pass
 
 	#Convierto el texto en audio y lo reproduzco
 	def speak(self, message: str) -> None:
-		tts = gtts.gTTS(message)
+		tts = gtts.gTTS(message, lang=self.lang, tld="com.mx")
 		tmpAudioPath = os.path.join(os.getcwd(), "audio/tmp_audio.mp3")
 		tts.save(tmpAudioPath)
 		os.system(f'play {tmpAudioPath}')

@@ -11,8 +11,8 @@ from lib.core import redis_db, global_config, dialogs
 
 
 on = True #Este es el estao de astro
-Tex_Spe = TTS()
-Spe_Text = STT()
+Tex_Spe = TTS(lang=global_config['output_lang'])
+Spe_Text = STT(lang=global_config['input_lang'])
 
 def voice_question (question: str, timeout: int = 4) -> str:
 	if not question:

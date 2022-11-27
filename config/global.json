@@ -1,6 +1,6 @@
 {
     "env": "development",
     "activation_word": "astro",
-    "input_lang": "en-US",
-    "output_lang": "en-US"
+    "input_lang": "en-EU",
+    "output_lang": "en"
 }
